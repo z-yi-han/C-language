@@ -14,11 +14,11 @@ void game()
 	//初始化
 	InitBoard(mine, ROWS, COLS,'0');
 	InitBoard(show, ROWS, COLS, '*');
-	//打印
-	//DisplayBoard(mine, ROW, COL);
-	DisplayBoard(show, ROW, COL);
+
 	//布置
 	setMine(mine, ROW, COL);
+	//打印
+	DisplayBoard(show, ROW, COL);
 	//排查
 	FindMine(mine,show,ROW,COL);
 }

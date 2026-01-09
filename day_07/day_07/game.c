@@ -32,6 +32,7 @@ void DisplayBoard(char arr[ROWS][COLS], int row, int col)
 		printf("\n");
 	}
 }
+
 void setMine(char arr[ROWS][COLS], int row, int col)
 {
 	int count = EASY_COUNT;
@@ -46,10 +47,24 @@ void setMine(char arr[ROWS][COLS], int row, int col)
 		}
 	}
 }
-static int GetMineCount(char mine[ROWS][COLS],int x,int y)
+//static int GetMineCount(char mine[ROWS][COLS],int x,int y)
+//{
+//	return (mine[x - 1][y] + mine[x - 1][y - 1] + mine[x][y - 1] + mine[x + 1][y -1] + mine[x + 1][y] +
+//		mine[x + 1][y + 1] + mine[x][y + 1] + mine[x - 1][y + 1] - 8 * '0') ;
+//}
+static int GetMineCount(char mine[ROWS][COLS], int x, int y)
 {
-	return (mine[x - 1][y] + mine[x - 1][y - 1] + mine[x][y - 1] + mine[x + 1][y -1] + mine[x + 1][y] +
-		mine[x + 1][y + 1] + mine[x][y + 1] + mine[x - 1][y + 1] - 8 * '0') ;
+	int i = 0;
+	int count = 0;
+	for (i = x - 1; i <= x + 1; i++)
+	{
+		int j = 0;
+		for (j = y - 1; j <= y + 1; j++)
+		{
+			count += (mine[i][j] - '0');
+		}
+	}
+	return count;
 }
 void FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col)
 {
